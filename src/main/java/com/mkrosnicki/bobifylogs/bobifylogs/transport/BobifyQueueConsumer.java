@@ -1,17 +1,41 @@
 package com.mkrosnicki.bobifylogs.bobifylogs.transport;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mkrosnicki.bobifylogs.bobifylogs.config.RabbitConfig;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import com.mkrosnicki.bobifylogs.bobifylogs.transport.dto.LogDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+import java.util.Optional;
+
 @Component
+@RequiredArgsConstructor
 public class BobifyQueueConsumer {
 
-    @RabbitListener(queues = RabbitConfig.QUEUE_NAME)
-    public void receive(@Payload String fileBody) {
-        System.out.println(fileBody);
+  private final ObjectMapper objectMapper;
+
+  @RabbitListener(queues = RabbitConfig.QUEUE_NAME)
+  public void receive(@Payload Object object) {
+    if (object instanceof Message) {
+      final Optional<String> messageBody = getMessageBodyAsString((Message) object);
+      if (messageBody.isPresent()) {
+        try {
+          final LogDto logDto = objectMapper.convertValue(messageBody, LogDto.class);
+        } catch (Exception e) {
+
+        }
+      }
     }
+  }
+
+  private Optional<String> getMessageBodyAsString(final Message object) {
+    final Message message = object;
+    byte[] body = message.getBody();
+    return Objects.nonNull(body) ? Optional.of(new String(body)) : Optional.empty();
+  }
 
 }
