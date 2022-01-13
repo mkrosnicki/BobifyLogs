@@ -7,10 +7,9 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = RabbitConfig.QUEUE_NAME)
 public class BobifyQueueConsumer {
 
-    @RabbitHandler
+    @RabbitListener(queues = RabbitConfig.QUEUE_NAME)
     public void receive(@Payload String fileBody) {
         System.out.println(fileBody);
     }
