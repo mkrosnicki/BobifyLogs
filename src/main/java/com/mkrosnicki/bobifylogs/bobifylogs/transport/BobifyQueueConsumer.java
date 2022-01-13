@@ -24,7 +24,7 @@ public class BobifyQueueConsumer {
       final Optional<String> messageBody = getMessageBodyAsString((Message) object);
       if (messageBody.isPresent()) {
         try {
-          final LogDto logDto = objectMapper.convertValue(messageBody, LogDto.class);
+          final LogDto logDto = objectMapper.readValue(messageBody.get(), LogDto.class);
         } catch (Exception e) {
 
         }
