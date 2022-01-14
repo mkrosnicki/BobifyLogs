@@ -1,4 +1,4 @@
-package com.mkrosnicki.bobifylogs.bobifylogs.config;
+package com.mkrosnicki.bobifylogs.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

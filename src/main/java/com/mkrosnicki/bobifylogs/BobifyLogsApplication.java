@@ -1,4 +1,4 @@
-package com.mkrosnicki.bobifylogs.bobifylogs;
+package com.mkrosnicki.bobifylogs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

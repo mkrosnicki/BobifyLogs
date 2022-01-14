@@ -1,4 +1,4 @@
-package com.mkrosnicki.bobifylogs.bobifylogs.model;
+package com.mkrosnicki.bobifylogs.model;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.annotation.Id;

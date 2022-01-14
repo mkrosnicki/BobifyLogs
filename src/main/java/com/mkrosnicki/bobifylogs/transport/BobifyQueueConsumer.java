@@ -1,10 +1,10 @@
-package com.mkrosnicki.bobifylogs.bobifylogs.transport;
+package com.mkrosnicki.bobifylogs.transport;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mkrosnicki.bobifylogs.bobifylogs.config.RabbitConfig;
-import com.mkrosnicki.bobifylogs.bobifylogs.model.LogItem;
-import com.mkrosnicki.bobifylogs.bobifylogs.repositories.LogItemsRepository;
-import com.mkrosnicki.bobifylogs.bobifylogs.transport.dto.LogDto;
+import com.mkrosnicki.bobifylogs.config.RabbitConfig;
+import com.mkrosnicki.bobifylogs.model.LogItem;
+import com.mkrosnicki.bobifylogs.repositories.LogItemsRepository;
+import com.mkrosnicki.bobifylogs.transport.dto.LogDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

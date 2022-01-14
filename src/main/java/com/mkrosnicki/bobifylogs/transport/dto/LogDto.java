@@ -1,4 +1,4 @@
-package com.mkrosnicki.bobifylogs.bobifylogs.transport.dto;
+package com.mkrosnicki.bobifylogs.transport.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.AllArgsConstructor;

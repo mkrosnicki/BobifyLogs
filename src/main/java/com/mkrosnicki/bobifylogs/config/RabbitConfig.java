@@ -1,4 +1,4 @@
-package com.mkrosnicki.bobifylogs.bobifylogs.config;
+package com.mkrosnicki.bobifylogs.config;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
