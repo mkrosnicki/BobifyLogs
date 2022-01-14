@@ -1,12 +1,8 @@
 package com.mkrosnicki.bobifylogs.bobifylogs.repositories;
 
 import com.mkrosnicki.bobifylogs.bobifylogs.model.LogItem;
-//import org.springframework.data.mongodb.repository.MongoRepository;
-//
-//public interface LogItemsRepository extends MongoRepository<LogItem, String> { // todo
-//
-//}
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface LogItemsRepository {
+public interface LogItemsRepository extends MongoRepository<LogItem, String> {
 
 }

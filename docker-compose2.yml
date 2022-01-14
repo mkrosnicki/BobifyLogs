@@ -1,5 +1,16 @@
 version: "3.7"
 services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - '5673:5672'
+      - '15673:15672'
+    volumes:
+      - ./rabbit/lib:/var/lib/rabbitmq/
+      - ./rabbit/log:/var/log/rabbitmq
+    networks:
+      - rabbitmq_go_net
   mongodb:
     container_name: mongo-dev
     image: mongo
@@ -9,8 +20,8 @@ services:
       - mongo-compose-network
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_DATABASE=auth
       - MONGO_INITDB_ROOT_PASSWORD=pass
+      - MONGO_INITDB_DATABASE=bobify
     ports:
       - '27018:27017'
   mongo-express:
@@ -31,5 +42,7 @@ services:
     restart: unless-stopped
 
 networks:
+  rabbitmq_go_net:
+    driver: bridge
   mongo-compose-network:
     driver: bridge
