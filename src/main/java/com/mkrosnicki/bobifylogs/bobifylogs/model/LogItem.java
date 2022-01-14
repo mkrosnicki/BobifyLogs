@@ -6,21 +6,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @Document("logItems")
+@AllArgsConstructor
 public class LogItem {
 
     @Id
     private String id;
-
     private LocalDateTime timestamp;
     private String userName;
     private String className;
     private String methodName;
     private String arguments;
-    private long duration;
-    private int queryCount;
-    private String error;
-
+    private Long duration;
+    private long queryCount;
+    private String errorMessage;
+    private String stackTrace;
 
 }

@@ -24,6 +24,8 @@ services:
       - MONGO_INITDB_DATABASE=bobify
     ports:
       - '27018:27017'
+    volumes:
+      - mongodb:/data/db
   mongo-express:
     container_name: mongo-express
     image: mongo-express
@@ -39,6 +41,8 @@ services:
       - ME_CONFIG_BASICAUTH_PASSWORD=ihavealongpassword
     ports:
       - '8082:8081'
+    volumes:
+      - mongodb:/data/db
     restart: unless-stopped
 
 networks:
@@ -46,3 +50,7 @@ networks:
     driver: bridge
   mongo-compose-network:
     driver: bridge
+
+volumes:
+  mongodb:
+    driver: local
