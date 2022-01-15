@@ -18,8 +18,22 @@ public class BobifyQueueConsumer {
 
   private final ObjectMapper objectMapper;
 
-  @RabbitListener(queues = RabbitConfig.QUEUE_NAME)
-  public void receive(@Payload Object object) {
+  @RabbitListener(queues = RabbitConfig.LOG_QUEUE_NAME)
+  public void receiveLog(@Payload Object object) {
+    if (object instanceof Message) {
+      final Optional<String> messageBody = getMessageBodyAsString((Message) object);
+      if (messageBody.isPresent()) {
+        try {
+          final LogDto logDto = objectMapper.readValue(messageBody.get(), LogDto.class);
+        } catch (Exception e) {
+
+        }
+      }
+    }
+  }
+
+  @RabbitListener(queues = RabbitConfig.NOTIFICATIONS_QUEUE_NAME)
+  public void receiveNotification(@Payload Object object) {
     if (object instanceof Message) {
       final Optional<String> messageBody = getMessageBodyAsString((Message) object);
       if (messageBody.isPresent()) {

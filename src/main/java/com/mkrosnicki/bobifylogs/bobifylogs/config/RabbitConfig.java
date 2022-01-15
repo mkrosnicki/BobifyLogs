@@ -1,13 +1,12 @@
 package com.mkrosnicki.bobifylogs.bobifylogs.config;
 
-import org.springframework.amqp.core.Queue;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
 
-    public static final String QUEUE_NAME = "bobifylogs"; // todo move to properties!
+  public static final String LOG_QUEUE_NAME = "bobifylogs"; // todo move to properties!
+  public static final String NOTIFICATIONS_QUEUE_NAME = "bobifynotifications"; // todo move to properties!
 
 //    @Bean
 //    public Queue queue() {
